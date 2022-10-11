@@ -1,0 +1,22 @@
+
+header {
+    width: 100%;
+    height: 50px;
+    background-color: bisque;
+    vertical-align: top;
+}
+
+.flexСontainer {
+    max-width: 980px;
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    height: 50px;
+    background-color: bisque;
+    display: flex;
+}
+
+.menuPoint{
+    line-height:  50px;
+    margin-right: 100px;
+}

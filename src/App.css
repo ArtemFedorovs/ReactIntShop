@@ -4,3 +4,10 @@
   box-sizing: border-box;
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.main-container{
+  margin-right: auto;
+  margin-left: auto;
+  max-width: 980px;
+  width: 100%;
+}

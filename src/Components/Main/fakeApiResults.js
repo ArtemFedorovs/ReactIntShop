@@ -1,0 +1,70 @@
+
+export default
+{
+  List: [
+    {
+        scu: 124516015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 1226376015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 0,
+    },
+    {
+        scu: 124860015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 12426015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 258776015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 52899296015,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 64834815,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+    {
+        scu: 42574864865,
+        name: "Бесщеточная самоходная аккумуляторная газонокосилка Greenworks GD40LM46SP 40 В, с 1 АКБ 4 А*ч и ЗУ",
+        img: null,
+        price: 13455,
+        currency: "RUB",
+        stock: 1,
+    },
+  ]  ,
+}

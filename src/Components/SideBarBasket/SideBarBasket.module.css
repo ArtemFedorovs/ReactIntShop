@@ -1,0 +1,10 @@
+.sideBar{
+    display: inline-block;
+    width: 20%;
+    max-width: 194px;
+    border: solid 1px black;
+    vertical-align: top;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 0;
+}
