@@ -7,16 +7,18 @@ import Product from './Components/Product/Product.js';
 import WrongUrl from './Components/WrongUrl/WrongUrl.js';
 import SideBarBasket from './Components/SideBarBasket/SideBarBasket.js';
 import {  BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import {useSelector} from 'react-redux';
 
 function App() {
+  const autorization = useSelector((state)=>state.autorization);
   return (
     <Router>
       <Header/>
       <div className="main-container">
         <Routes>
-              <Route path='/' element = {<><Main/><SideBarBasket/></>} exact/>
-              <Route path='/about' element = {<><About/><SideBarBasket/></>} exact/>
-              <Route path='/product' element = {<><Product/><SideBarBasket/></>} exact/> 
+              <Route path='/' element = {<><Main/>{autorization ? <SideBarBasket/> : null}</>} exact/>
+              <Route path='/about' element = {<><About/>{autorization ? <SideBarBasket/> : null}</>} exact/>
+              <Route path='/product' element = {<><Product/>{autorization ? <SideBarBasket/> : null}</>} exact/> 
               <Route path='*' exact={true} element = {<WrongUrl/>}/>          
         </Routes>         
       </div>

@@ -1,11 +1,17 @@
 import { configureStore } from '@reduxjs/toolkit';
 
-const productListReducer = (state = {}, action)=>{    
+const productListReducer = (state = {List: null}, action)=>{    
   switch (action.type){
-
-    case "FETCH_DATA_SUCCESS": {
-      return action.payload ;
-    };   
+    case "FETCH_DATA_SUCCESS":  return state.List ? state : action.payload ; 
+    case "SAVE_NEW_PRODUCT_DATA":  
+        return {List: state.List.map((elem) =>  {
+                                                  if(elem.scu === action.payload.scu) {
+                                                    return action.payload
+                                                  } else {
+                                                    return elem
+                                                  }
+                                                })
+                };  
     default: return state;
   } ;
 };
@@ -24,11 +30,20 @@ const busketReducer = (state = {}, action)=>{
   } ;
 };
 
+const autorizationReducer = (state = null, action)=>{    
+  switch (action.type){
+
+    case "CHANGE_USER": return action.payload;   
+    default: return state;
+  } ;
+};
+
 
 export const store = configureStore({
   reducer: {
     productList: productListReducer,
     busket: busketReducer,
+    autorization: autorizationReducer,
   },
 });
 
