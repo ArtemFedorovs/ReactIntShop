@@ -17,7 +17,7 @@ function BasketPoint({scu, amount}) {
           <td className={styles.cell3}>{orderData.price} р.</td>
           <td className={styles.cell4}>{amount}</td>
           <td className={styles.cell5}>{orderData.price * amount} р.</td>
-          <td className={styles.cell6}><div onClick = {() => {deleteFromBusket()}}>X</div></td>
+          <td className={styles.cell6} onClick = {() => {deleteFromBusket()}}><div >X</div></td>
         </tr>
         : null
     );
