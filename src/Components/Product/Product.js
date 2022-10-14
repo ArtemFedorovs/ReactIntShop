@@ -1,6 +1,5 @@
 import styles from './Product.module.css'; // Import css modules stylesheet as styles
-import fakeApiResults from '../Main/fakeApiResults.js'; 
-import { useEffect, useState } from 'react';
+import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import defaultImg from '../../img/nophoto.png';
 
@@ -18,7 +17,7 @@ function Product() {
   const [amountOfAddingToBusket, setAmountOfAddingToBusket] = useState(1);
 
   function saveNewProductData() {
-    console.log(newproductData.name)
+    
     if (newproductData.name.trim().length >= 30) {   // 4 условия валидации введенных данных
       alert("Название не должно быть длиннее 30 символов")
       return
@@ -40,32 +39,32 @@ function Product() {
   }
 
   function addToBusket(amountOfAddingToBusket){
-    productData.stock && dispatch({type: "ADD_TO_BUSCET", payload: {id: productData.id, amount: amountOfAddingToBusket, price: productData.price}})
+    autorization && productData.stock && dispatch({type: "ADD_TO_BUSCET", payload: {id: productData.id, amount: amountOfAddingToBusket, price: productData.price, limit: productData.stock}})
   }
 
     return (
       <main className={styles.main}>
-        {editMod ? 
-            <input  value = {newproductData.name} 
+        {editMod ?  /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
+            <input className={styles.editInput}  value = {newproductData.name} 
                     onInput ={(event) => {setNewproductData({...newproductData, name: event.target.value})}}/>
             : <h2>{productData.name}</h2>
         }
-        <img src={!productData.img ? defaultImg : productData.img} alt="альтернативный текст" className={styles.img}></img>
-        {editMod ? 
-            <textarea  value = {newproductData.description} 
+        <img src={!productData.img ? defaultImg : require(`../../img/${productData.img}.jpg`)} alt="альтернативный текст" className={styles.img}></img>
+        {editMod ?  /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
+            <textarea className={styles.editTextarea}  value = {newproductData.description} 
                     onInput ={(event) => {setNewproductData({...newproductData, description: event.target.value})}}/>
-            : <div>{productData.description}</div>
+            : <div className={styles.description}>{productData.description}</div>
         }
-        {editMod ? 
-            <input  value = {newproductData.stock} 
+        {editMod ? /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
+            <input className={styles.editInput}  value = {newproductData.stock} 
                     onInput ={(event) => {setNewproductData({...newproductData, stock: event.target.value})}}/>
-            : <div>{"Осталось в наличии: " + productData.stock + " " + productData.units}</div>
+            : <div className={styles.description}>{"Осталось в наличии: " + productData.stock + " " + productData.units}</div>
         }
  
         <div>
-          <input 
+          <input
               value = {amountOfAddingToBusket} 
-              className={styles.input} 
+              className={styles.amountInput} 
               type = "number" 
               onChange={(event) => {setAmountOfAddingToBusket(event.target.value)}}
             />
@@ -79,29 +78,28 @@ function Product() {
                   </p>
           </div>
         </div>
+
         {/* Блок редактирования данных, показывается только если пользователь - админ */}
         {autorization === "admin" ?
           <div>
             {editMod ?
               <>
-                <div onClick = {() => {saveNewProductData()}}  className={styles.button}>
+                <div onClick = {() => {saveNewProductData()}}  className={styles.buttonHalfWidth}>
                   <p className={styles.buttonText}>Сохранить</p>
                 </div>
-                <div onClick = {() => {setEditMod(!editMod)}}  className={styles.button}>
+                <div onClick = {() => {setEditMod(!editMod)}}  className={styles.buttonHalfWidth}>
                   <p className={styles.buttonText}>Отмена</p>
                 </div> 
              </>
             :  
-              <div onClick = {() => {setEditMod(!editMod)}}  className={styles.button}>
+              <div onClick = {() => {setEditMod(!editMod)}}  className={styles.editButton}>
                 <p className={styles.buttonText}>Редактировать</p>
               </div>
             }
           </div>
         : null  
         }
-
-      </main>
-    
+      </main> 
     );
 }
 

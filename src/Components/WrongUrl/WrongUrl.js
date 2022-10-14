@@ -1,9 +1,9 @@
-import styles from './WrongUrl.module.css'; // Import css modules stylesheet as styles
+import styles from './WrongUrl.module.css'; 
 
 function WrongUrl() {
     return (
       <main className={styles.main}>
-        <div>Что-то пошло не так. Данной страницы не существует</div>
+        <div className={styles.text}>Что-то пошло не так. Данной страницы не существует</div>
       </main>
     
     );

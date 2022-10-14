@@ -1,0 +1,39 @@
+.row {
+    width:92%;
+    margin-left: 4%;
+    margin-right: 4%;
+    height: 40px;
+}
+
+.cell1, .cell2, .cell3, .cell4, .cell5{
+    padding:2px;
+    overflow: hidden;
+    
+}
+
+.cell1{
+    width:16%; 
+}
+
+.cell2{
+    width:40%; 
+}
+
+.cell3{
+    width:10%; 
+}
+
+.cell4{
+    width:8%; 
+    text-align: center;
+}
+
+.cell5{
+    width:8%; 
+}
+
+.cell6{
+    width:4%; 
+    text-align: center;
+}
+

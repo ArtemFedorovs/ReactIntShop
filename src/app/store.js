@@ -21,23 +21,30 @@ const busketReducer = (state = {}, action)=>{
 
     case "ADD_TO_BUSCET": {
       let newState = {...state};
-      newState[action.payload.id] = newState[action.payload.id] ? 
-          {amount: newState[action.payload.id].amount + action.payload.amount, total: newState[action.payload.id].total + action.payload.price * action.payload.amount} : 
-          {amount: action.payload.amount, total: action.payload.price * action.payload.amount};
+      if ((newState[action.payload.id]?.amount || 0) + action.payload.amount <= action.payload.limit) {
+        newState[action.payload.id] = newState[action.payload.id] ? 
+            {amount: newState[action.payload.id].amount + action.payload.amount, total: newState[action.payload.id].total + action.payload.price * action.payload.amount} : 
+            {amount: action.payload.amount, total: action.payload.price * action.payload.amount};
+      }
       return newState;
-    };   
+    }; 
+
+    case "DELETE_FROM_BUSCET": {
+      let newState = {...state};
+      delete newState[action.payload];
+      return newState;
+    };
+
     default: return state;
   } ;
 };
 
 const autorizationReducer = (state = null, action)=>{    
   switch (action.type){
-
     case "CHANGE_USER": return action.payload;   
     default: return state;
   } ;
 };
-
 
 export const store = configureStore({
   reducer: {

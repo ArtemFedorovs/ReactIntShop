@@ -1,6 +1,9 @@
 .main{
     display: inline-block;
-    width: 80%;
-    max-width: 776px;
-    border: solid 1px black;
+    width: 75%;
+    max-width: 750px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: calc(100vh - 72px); 
 }

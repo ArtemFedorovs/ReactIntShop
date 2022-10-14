@@ -6,7 +6,8 @@ import About from './Components/About/About.js';
 import Product from './Components/Product/Product.js';
 import WrongUrl from './Components/WrongUrl/WrongUrl.js';
 import SideBarBasket from './Components/SideBarBasket/SideBarBasket.js';
-import {  BrowserRouter as Router, Routes, Route} from "react-router-dom";
+import Basket from './Components/Basket/Basket.js';
+import {BrowserRouter as Router, Routes, Route} from "react-router-dom";
 import {useSelector} from 'react-redux';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
               <Route path='/' element = {<><Main/>{autorization ? <SideBarBasket/> : null}</>} exact/>
               <Route path='/about' element = {<><About/>{autorization ? <SideBarBasket/> : null}</>} exact/>
               <Route path='/product' element = {<><Product/>{autorization ? <SideBarBasket/> : null}</>} exact/> 
+              <Route path='/basket' element = {<><Basket/>{autorization ? <SideBarBasket/> : null}</>} exact/> 
               <Route path='*' exact={true} element = {<WrongUrl/>}/>          
         </Routes>         
       </div>

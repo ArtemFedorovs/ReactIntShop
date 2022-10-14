@@ -6,14 +6,15 @@ import ProductTile from '../ProductTile/ProductTile.js';
 
 function Main() {
     const dispatch=useDispatch();
-    useEffect(() => {
+
+    useEffect(() => {  //При загрузке сайта имитируем запрос на сервер, на самом деле читаем обьект из другого файла и диспатчим результат.
         let promise = new Promise(function(resolve, reject) {
             setTimeout(() => {resolve(fakeApiResults)}, 100)
         });
         promise.then( (result)=>{ dispatch({type: "FETCH_DATA_SUCCESS", payload: result}) } )    
     }, []);
 
-const productList = useSelector((state)=>state.productList.List)
+    const productList = useSelector((state)=>state.productList.List)
 
     return (
         <main className={styles.main}>
@@ -25,7 +26,7 @@ const productList = useSelector((state)=>state.productList.List)
                                                     img = {unit.img} 
                                                     name = {unit.name} 
                                                     price = {unit.price} 
-                                                    stock = {unit.stock} 
+                                                    stock = {unit.stock}    
                                                 />
                 )}
             </div>
