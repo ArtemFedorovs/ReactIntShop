@@ -1,13 +1,21 @@
-import styles from './Product.module.css'; // Import css modules stylesheet as styles
+import styles from './Product.module.css';
 import {useState, useEffect} from 'react';
 import {useDispatch, useSelector} from 'react-redux';
 import defaultImg from '../../img/nophoto.png';
+import {useNavigate} from "react-router-dom";
 
 function Product() {
   const dispatch=useDispatch();
-
+  const navigate = useNavigate();
   const productId = Number(document.location.search.match(/^\?id=.{1,}/)[0].slice(4)); //Берем id продукта из Get параметра
-  const productData = useSelector((state)=>state.productList.List.find((item) => {return item.scu == productId})); //Берем данные о продукте из редакса
+
+  const productsData = useSelector((state)=>state.productList.List);  //Берем данные о продукте из редакса
+  const productData = !productsData? {} : productsData.find((item) => {return item.scu == productId})
+  useEffect(   //редирект на главную в случае, если данных нет
+    () => {!productsData && navigate("/")},
+    []
+  )
+  
   const [newproductData, setNewproductData] = useState(productData);  //  Стейт для вводимых данных о продукции в режиме редактирования
 
   const autorization = useSelector((state)=>state.autorization);   //  Авторизирован ли пользователь
@@ -42,6 +50,18 @@ function Product() {
     autorization && productData.stock && dispatch({type: "ADD_TO_BUSCET", payload: {id: productData.id, amount: amountOfAddingToBusket, price: productData.price, limit: productData.stock}})
   }
 
+  function limitChange(value) {
+    if ((value > 0) && (value < 100)) {
+      setNewproductData({...newproductData, stock: + value})
+    }
+  }
+
+  function orderNumberChange(value) {
+    if ((value > 0) && (value < 100)) {
+      setAmountOfAddingToBusket(value)
+    }
+  }
+
     return (
       <main className={styles.main}>
         {editMod ?  /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
@@ -56,8 +76,8 @@ function Product() {
             : <div className={styles.description}>{productData.description}</div>
         }
         {editMod ? /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
-            <input className={styles.editInput}  value = {newproductData.stock} 
-                    onInput ={(event) => {setNewproductData({...newproductData, stock: event.target.value})}}/>
+            <input className={styles.editInput}  value = {newproductData.stock} min = {1} max = {99}
+                    onInput ={(event) => {limitChange(event.target.value)}}/>
             : <div className={styles.description}>{"Осталось в наличии: " + productData.stock + " " + productData.units}</div>
         }
  
@@ -66,7 +86,7 @@ function Product() {
               value = {amountOfAddingToBusket} 
               className={styles.amountInput} 
               type = "number" 
-              onChange={(event) => {setAmountOfAddingToBusket(event.target.value)}}
+              onChange={(event) => {orderNumberChange(event.target.value)}}
             />
           <div onClick = {() => {addToBusket(Number(amountOfAddingToBusket))}}  className={styles.button}>
                   <p className={styles.buttonText}>

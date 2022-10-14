@@ -39,7 +39,7 @@ const busketReducer = (state = {}, action)=>{
   } ;
 };
 
-const autorizationReducer = (state = null, action)=>{    
+const autorizationReducer = (state = "admin", action)=>{    
   switch (action.type){
     case "CHANGE_USER": return action.payload;   
     default: return state;
