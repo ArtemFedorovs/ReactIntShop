@@ -1,9 +1,11 @@
 import styles from './Basket.module.css'; 
 import {useSelector} from 'react-redux';
-import BasketPoint from '../BasketPoint/BasketPoint.js';
+import BasketPoint from '../BasketPoint/BasketPoint';
+import {RootState} from '../../app/store';
+import React from 'react';
 
 function Basket() {
-  const basket = useSelector(state=>Object.entries(state.busket));
+  const basket = useSelector((state: RootState) =>  Object.entries(state.busket));
   
     return (
       <main className={styles.main}>
@@ -18,7 +20,7 @@ function Basket() {
             <th className={styles.cell5}>Стоимость</th>
             <th className={styles.cell6}></th>
           </tr>
-            {Object.entries(basket).map((elem)=><BasketPoint key = {elem[1][0]} scu = {elem[1][0]} amount  = {elem[1][1].amount}/>)}
+            {basket.map((elem)=><BasketPoint key = {elem[0]} scu = {elem[0]} amount  = {elem[1].amount}/>)}
         </tbody>
         </table>
       </main>

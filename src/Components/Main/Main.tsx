@@ -1,11 +1,12 @@
 import styles from './Main.module.css'; // Import css modules stylesheet as styles
 import fakeApiResults from './fakeApiResults.js'; 
-import { useEffect } from 'react';
+import React, {useEffect} from 'react';
 import {useSelector, useDispatch} from 'react-redux';
-import ProductTile from '../ProductTile/ProductTile.js';
+import ProductTile from '../ProductTile/ProductTile';
+import {RootState, AppDispatch} from '../../app/store'; //типы
 
 function Main() {
-    const dispatch=useDispatch();
+    const dispatch: AppDispatch = useDispatch();
 
     useEffect(() => {  //При загрузке сайта имитируем запрос на сервер, на самом деле читаем обьект из другого файла и диспатчим результат.
         let promise = new Promise(function(resolve, reject) {
@@ -14,7 +15,7 @@ function Main() {
         promise.then( (result)=>{ dispatch({type: "FETCH_DATA_SUCCESS", payload: result}) } )    
     }, []);
 
-    const productList = useSelector((state)=>state.productList.List)
+    const productList = useSelector((state: RootState)=>state.productList)
 
     return (
         <main className={styles.main}>
