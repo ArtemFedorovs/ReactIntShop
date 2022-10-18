@@ -1,0 +1,8 @@
+.main{
+    display: inline-block;
+    width: 100%;
+    max-width: 776px;
+    font-size: 200%;
+    padding: 100px;
+    text-align: center;
+}

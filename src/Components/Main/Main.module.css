@@ -1,0 +1,18 @@
+.main{
+    display: inline-block;
+    width: 75%;
+    max-width: 750px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: calc(100vh - 72px);   
+}
+
+.flexContainer {
+    width: 100%;
+    vertical-align: top;
+    display: flex; 
+    flex-wrap: wrap  ;
+    justify-content: space-between ;
+
+}

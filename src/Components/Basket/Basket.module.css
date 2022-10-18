@@ -1,0 +1,57 @@
+.main{
+    display: inline-block;
+    width: 75%;
+    max-width: 750px;
+    background: #fff;
+    border-radius: 8px;
+    padding: 10px;
+    min-height: calc(100vh - 70px); 
+}
+
+h2{
+    margin: 2%;
+    text-align: center;
+}
+
+.fullWidth{
+    width: 96%;
+    margin: auto;
+}
+
+.cell1, .cell2, .cell3, .cell4, .cell5{
+
+    overflow: hidden;
+}
+
+.cell1{
+    width:16%; 
+}
+
+.cell2{
+    width:42%; 
+}
+
+.cell3{
+    width:8%; 
+}
+
+.cell4{
+    width:8%; 
+}
+
+.cell5{
+    width:8%; 
+}
+
+.cell6{
+    width:4%; 
+}
+
+table, th, td {
+    border: 2px solid #f1f4f9;
+    border-collapse: collapse;
+ }
+
+ tr{
+    height: 30px;
+ }

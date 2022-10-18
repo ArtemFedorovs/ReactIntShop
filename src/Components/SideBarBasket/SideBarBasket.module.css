@@ -1,0 +1,28 @@
+.sideBar{
+    padding-left: 16px;
+    display: inline-block;
+    width: 25%;
+    max-width: 250px;
+    vertical-align: top;
+    position: -webkit-sticky; /* Safari */
+    position: sticky;
+    top: 10px;
+    color: black;
+    font-size: 16px;
+    border: solid 1px #f1f4f9;
+    text-align: justify;
+}
+
+.sideBar:hover{
+    border: 1px solid #dcdcdc;
+    border-radius: 6px;
+}
+
+.textBlock{
+    display: inline-block;
+}
+
+.icon{
+ height: 36px;
+ float: right;
+}
