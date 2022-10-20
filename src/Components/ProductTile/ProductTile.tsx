@@ -21,7 +21,7 @@ function ProductTile({id, img, name, price, stock}: ProductTilePropType ): JSX.E
     }
 
     return (
-        <div className={styles.tile}>
+        <div data-testid = "productTile" className={styles.tile}>
             <Link to={"/product?id=" + id} >
                 <div className={styles.name}>{name}</div>
             </Link>

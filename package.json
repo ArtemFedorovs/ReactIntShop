@@ -1,4 +1,11 @@
 {
+  "jest": {
+	"testURL": "http://localhost:3000/product?id=124346715",
+    "moduleNameMapper": {
+      "\\.(css|less|scss|sss|styl)$": "<rootDir>/node_modules/jest-css-modules",
+	"^.+.(png|jpg|svg)$": "jest-transform-stub"
+    }
+  },
   "name": "homework-react-intensive-shop",
   "version": "0.1.0",
   "private": true,
@@ -23,7 +30,7 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
+    "test": "jest --env=jsdom --coverage",
     "eject": "react-scripts eject"
   },
   "eslintConfig": {
@@ -43,5 +50,19 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/core": "^7.19.3",
+    "@babel/plugin-transform-modules-commonjs": "^7.18.6",
+    "@babel/preset-env": "^7.19.4",
+    "@babel/preset-react": "^7.18.6",
+    "@babel/preset-typescript": "^7.18.6",
+    "@testing-library/dom": "^8.19.0",
+    "babel-jest": "^29.2.1",
+    "jest": "^27.5.1",
+    "jest-css-modules": "^2.1.0",
+    "jest-svg-transformer": "^1.0.0",
+    "jest-transform-stub": "^2.0.0",
+    "react-test-renderer": "^18.2.0"
   }
 }

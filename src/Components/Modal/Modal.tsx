@@ -39,21 +39,21 @@ function Modal({isModal, setModal}: PropType) {
     return (
       isModal ? 
         <div className = {styles.mainContainer}> 
-          <div className={styles.modal}>
+          <div data-testid = "modal" className={styles.modal}>
             <div className={styles.close} onClick = {() => {!fakeFetchStatus && setModal(!isModal)}}>X</div>
             <div className={styles.inputLine}>
               <label>Логин</label>
-              <input value = {login} onChange ={(event) => {setLogin(event.target.value)}} type = "text"></input>
+              <input data-testid = "loginInput" value = {login} onChange ={(event) => {setLogin(event.target.value)}} type = "text"></input>
             </div>
             <div className={styles.inputLine}>
               <label>Пароль</label>
-              <input value = {password} onChange ={(event) => {setPassword(event.target.value)}} type = "text"></input>
+              <input data-testid = "passwordInput" value = {password} onChange ={(event) => {setPassword(event.target.value)}} type = "text"></input>
             </div>
             
               {AutorizationError ? <div className={styles.inputLine}>{AutorizationError}</div> : null} {/* выводим ощибку авторизации если такая есть*/}
   
             <div className={styles.buttonLine}>  {/* кнопки*/}
-              <div onClick = {() => {!fakeFetchStatus && checkPassword(login, password)}}  className={styles.button}>
+              <div data-testid = "modalLogOnButton" onClick = {() => {!fakeFetchStatus && checkPassword(login, password)}}  className={styles.button}>
                     <p className={styles.buttonText}>{fakeFetchStatus ? "Проверка" : "Войти"}</p>
               </div>
               <div onClick = {() => {setModal(!isModal)}}  className={styles.button}>

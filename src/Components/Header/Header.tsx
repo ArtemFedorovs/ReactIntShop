@@ -40,7 +40,7 @@ function Header() {
                 <img className={styles.icon} src={logOutIcon}/>
                 <div className={styles.buttonText}>Выйти</div>
               </div> :
-              <div onClick = {() => {setModal(!isModal)}} className={styles.autorization}>
+              <div data-testid = "headerLogOnButton" onClick = {() => {setModal(!isModal)}} className={styles.autorization}>
                 <img className={styles.icon} src={logInIcon} />
                 <div className={styles.buttonText}>Войти</div>
               </div> 

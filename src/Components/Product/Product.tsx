@@ -75,26 +75,26 @@ function Product(): JSX.Element {
   };
 
     return (
-      <main className={styles.main}>
+      <main className={styles.main}> 
         {editMod ?  /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
-            <input className={styles.editInput}  value = {newproductData?.name} 
+            <input data-testid = "nameInput" className={styles.editInput}  value = {newproductData?.name} 
                     onChange = {(event) => productNameInputChange(event)}/>
             : <h2>{productData?.name}</h2>
         }
         <img src={!productData?.img ? defaultImg : require(`../../img/${productData.img}.jpg`)} alt="альтернативный текст" className={styles.img}></img>
         {editMod ?  /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
-            <textarea className={styles.editTextarea}  value = {newproductData?.description} 
+            <textarea data-testid = "descriptionInput" className={styles.editTextarea}  value = {newproductData?.description} 
                     onChange = {(event) => {productDescriptioInputChange(event)}}/>
             : <div className={styles.description}>{productData?.description}</div>
         }
         {editMod ? /*В зависимости от того, включен ли режим редактирования показываем либо поля либо инпут для его изменения */
-            <input type = "number" className={styles.editInput}  value = {newproductData?.stock} min = {1} max = {99}
+            <input data-testid = "limitInput" type = "number" className={styles.editInput}  value = {newproductData?.stock} min = {1} max = {99}
                 onChange = {(event) => {limitChange(event)}}/>
             : <div className={styles.description}>{"Осталось в наличии: " + productData?.stock + " " + productData?.units}</div>
         }
  
         <div>
-          <input
+          <input data-testid = "orderInput"
               value = {amountOfAddingToBusket} 
               className={styles.amountInput} 
               type = "number" 

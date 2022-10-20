@@ -18,7 +18,7 @@ function BasketPoint({scu, amount}: PropType) {
   }
 
     return ( orderData ?
-        <tr className={styles.row}>
+        <tr data-testid = "busketRow" className={styles.row}>
           <td className={styles.cell1}>{scu}</td>
           <td className={styles.cell2}>{orderData.name}</td>
           <td className={styles.cell3}>{orderData.price} р.</td>

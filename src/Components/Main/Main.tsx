@@ -19,7 +19,7 @@ function Main() {
 
     return (
         <main className={styles.main}>
-            <div className={styles.flexContainer}>
+            <div data-testid = "flexForProducts" className={styles.flexContainer}>
                 {!productList ? null : productList.map((unit)=>
                                                 <ProductTile
                                                     key ={unit.scu} 
