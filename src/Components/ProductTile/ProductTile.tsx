@@ -2,17 +2,26 @@ import styles from './ProductTile.module.css'; // Import css modules stylesheet 
 import defaultImg from '../../img/nophoto.png';
 import {useDispatch, useSelector} from 'react-redux';
 import {Link} from "react-router-dom";
+import {RootState, AppDispatch} from '../../app/store'; //типы
+import React from 'react';
 
-function ProductTile({id, img, name, price, stock}) {
-    const dispatch=useDispatch();
-    const autorization = useSelector((state)=>state.autorization); //  Авторизирован ли пользователь
+type ProductTilePropType = {id: number, 
+    img: string, 
+    name: string,
+    price: number, 
+    stock: number
+  }
 
-    function addToBusket(){
+function ProductTile({id, img, name, price, stock}: ProductTilePropType ): JSX.Element {
+    const dispatch:  AppDispatch = useDispatch();
+    const autorization = useSelector((state: RootState)=>state.autorization); //  Авторизирован ли пользователь
+
+    function addToBusket(): void {
         autorization && stock && dispatch({type: "ADD_TO_BUSCET", payload: {id: id, price: price, amount: 1, limit: stock}})
     }
 
     return (
-        <div className={styles.tile}>
+        <div data-testid = "productTile" className={styles.tile}>
             <Link to={"/product?id=" + id} >
                 <div className={styles.name}>{name}</div>
             </Link>

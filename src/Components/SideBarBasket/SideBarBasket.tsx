@@ -2,9 +2,11 @@ import styles from './SideBarBasket.module.css'; // Import css modules styleshee
 import {useSelector} from 'react-redux';
 import {Link} from "react-router-dom";
 import basket from '../../icons/basket.svg';
+import React from 'react';
+import {RootState} from '../../app/store'; //типы
 
-function SideBarBasket() {
-    const busket = useSelector(state => state.busket);
+function SideBarBasket(): JSX.Element {
+    const busket = useSelector((state: RootState) => state.busket);
     const prodNumber = Object.values(busket).reduce((sum, elem) => sum + elem.amount, 0);
     const total = Object.values(busket).reduce((sum, elem) => sum + elem.total, 0);
 
